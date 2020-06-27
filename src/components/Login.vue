@@ -1,23 +1,23 @@
 <template>
     <div id="Login">
         <body>
-            <img class="logo" src="Images/CreeperFace.png" />
-            <h1 class="title">Quick Minecraft guide</h1>
+            <h1 class="title">Inloggen</h1>
 
             <div class="login">
-                <h3 class="text-field">Login</h3>
-                <span>username</span>
-                <input id="username" class="field" type="text" v-model="username"/>
-                <br />
-                <span>password</span>
-                <input id="password" class="field" type="text" v-model="password"/>
-                <br />
-                <button v-on:click="Login">login</button>
+                <div class="field">
+                    <span class="field-text">Username</span>
+                    <input id="username" class="field-input" type="text" v-model="username" placeholder="Username"/>
+                </div>
+                <div class="field">
+                    <span class="field-text">Password</span>
+                    <input id="password" class="field-input" type="password" v-model="password" placeholder="Password"/>
+                </div>
+                <button class="button-minecraft" v-on:click="Login">Login!</button>
                 <br>
                 <span id="error" v-if="error">de username of password klopt niet</span>
             </div>
-
-            <router-link to="/Register">Register here</router-link>
+            <br>
+            <router-link class="link" to="/Register">Geen account? Maak er hier een aan!</router-link>
         </body>
     </div>
 </template>
@@ -43,15 +43,14 @@
                 params.append('username', this.username);
                 params.append('password', this.password);
                 call.post("/account/login", params).then(resp => {
-                    console.log(resp.data);
                     if(resp.data === "")
                     {
                         this.error = true;
                     }
                     else
                     {
-                        this.$router.push('/Home');
                         sessionStorage.setItem('userId', resp.data.id)
+                        this.$router.push('/Items');
                     }
                 })
             }
@@ -60,33 +59,25 @@
 </script>
 
 <style scoped>
-    .login{
+    .login {
+        margin-top: 100px;
         text-align: center;
-    }
-    .login .text-field{
-        margin: 10px;
-    }
-
-    .login .field{
-        height: 30px;
         width: 250px;
-        margin-bottom: 20px;;
-        border-radius: 20px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .login button{
-        min-width: 100px;
-        min-height: 25px;
-        border-radius: 10px;
-        font-weight: bold;
+    .button-minecraft {
+        width: 100%;
+        margin-top: 30px;
     }
 
-    #error{
+    #error {
         color: red;
     }
 
     /*Rest*/
-    html{
+    html {
         background-color: green;
         font-family: monospace;
         font-size: 18px;

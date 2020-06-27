@@ -1,26 +1,28 @@
 <template>
     <div id="Registration">
         <h1>Registration</h1>
-        <div>
-            <span>username</span>
-            <br>
-            <input id="username" type="text" v-model="account.username"/>
-            <br>
-            <span>password</span>
-            <br>
-            <input id="password" type="text" v-model="account.password"/>
-            <br>
-            <span>minimaal 6 characters</span>
-            <span>email</span>
-            <br>
-            <input id="email" type="text" v-model="account.email"/>
-            <br>
-            <span>1 @ en 1 . in de email</span>
-            <br>
-            <button v-on:click="Register">register</button>
+        <div class="registration">
+            <div class="field">
+                <span class="field-text">Username</span>
+                <input id="username" class="field-input" type="text" v-model="account.username" placeholder="Username"/>
+            </div>
+            <div class="field">
+                <span class="field-text">Password</span>
+                <input id="password" class="field-input" type="password" v-model="account.password" placeholder="Password"/>
+                <span>minimaal 6 characters</span>
+            </div>
+            <div class="field">
+                <span class="field-text">Email</span>
+                <input id="email" class="field-input" type="text" v-model="account.email" placeholder="Email"/>
+                <span>1 @ en 1 . in de email</span>
+            </div>
+
+            <button class="button-minecraft" v-on:click="Register">Register!</button>
             <br>
             <span id="error" v-if="error">De grbuikersnaam bestaat al of een veld is niet geldig</span>
         </div>
+        <br>
+        <router-link class="link" to="/Login">Heb je al een account? Klik dan hier!</router-link>
     </div>
 </template>
 
@@ -61,5 +63,16 @@
 </script>
 
 <style scoped>
+.registration {
+    margin-top: 100px;
+    text-align: center;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.button-minecraft {
+    width: 100%;
+    margin-top: 30px;
+}
 </style>

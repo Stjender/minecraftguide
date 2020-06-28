@@ -5,16 +5,15 @@
 
             <div class="login">
                 <div class="field">
-                    <span class="field-text">Username</span>
+                    <p class="field-text">Username</p>
                     <input id="username" class="field-input" type="text" v-model="username" placeholder="Username"/>
                 </div>
                 <div class="field">
-                    <span class="field-text">Password</span>
+                    <p class="field-text">Password</p>
                     <input id="password" class="field-input" type="password" v-model="password" placeholder="Password"/>
                 </div>
+                <p id="error" v-if="error">de username of password klopt niet</p>
                 <button class="button-minecraft" v-on:click="Login">Login!</button>
-                <br>
-                <span id="error" v-if="error">de username of password klopt niet</span>
             </div>
             <br>
             <router-link class="link" to="/Register">Geen account? Maak er hier een aan!</router-link>

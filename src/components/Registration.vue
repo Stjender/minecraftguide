@@ -1,25 +1,22 @@
 <template>
     <div id="Registration">
-        <h1>Registration</h1>
+        <h1>Registreren</h1>
         <div class="registration">
             <div class="field">
-                <span class="field-text">Username</span>
+                <p class="field-text">Username</p>
                 <input id="username" class="field-input" type="text" v-model="account.username" placeholder="Username"/>
             </div>
             <div class="field">
-                <span class="field-text">Password</span>
+                <p class="field-text">Password</p>
                 <input id="password" class="field-input" type="password" v-model="account.password" placeholder="Password"/>
-                <span>minimaal 6 characters</span>
+                <p>minimaal 6 characters</p>
             </div>
             <div class="field">
                 <span class="field-text">Email</span>
                 <input id="email" class="field-input" type="text" v-model="account.email" placeholder="Email"/>
-                <span>1 @ en 1 . in de email</span>
             </div>
-
+            <p id="error" v-if="error">De gebruikersnaam bestaat al of een veld is niet geldig</p>
             <button class="button-minecraft" v-on:click="Register">Register!</button>
-            <br>
-            <span id="error" v-if="error">De grbuikersnaam bestaat al of een veld is niet geldig</span>
         </div>
         <br>
         <router-link class="link" to="/Login">Heb je al een account? Klik dan hier!</router-link>
@@ -74,5 +71,9 @@
 .button-minecraft {
     width: 100%;
     margin-top: 30px;
+}
+
+#error {
+    color: red;
 }
 </style>

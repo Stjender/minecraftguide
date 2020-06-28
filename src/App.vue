@@ -59,4 +59,8 @@ html {
   font-size: 30px;
   padding: 10px 50px 10px 50px;
 }
+
+p {
+  margin: 0px;
+}
 </style>
